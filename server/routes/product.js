@@ -58,12 +58,18 @@ router.post("/getProducts", (req, res) => {
       let skip  = parseInt(req.body.skip);
 
       let findArgs = {}
+      
+      let term = req.body.searchTerm
+
 
       console.log(req.body.filters)
       for (let key in req.body.filters) {
          if (req.body.filters[key].length > 0) {
             if (key === "price") {
-               
+               findArgs[key] = {
+                  $gte: req.body.filters[key][0],
+                  $lte: req.body.filters[key][1],
+               }
             }
             else {
                findArgs[key] = req.body.filters[key];
@@ -71,7 +77,23 @@ router.post("/getProducts", (req, res) => {
          }
       }
 
-   Product.find(findArgs)
+      console.log(findArgs)
+      console.log(term)
+ 
+
+   if (term) {
+      Product.find(findArgs)
+      .find({$text: {$search: term}})
+      .populate("writer")
+      .sort([[sortBy,order]])
+      .skip(skip)
+      .limit(limit)
+      .exec((err,products) => {
+      if(err) return res.status(400).json({success: false, err})
+         return res.status(200).json({success: true, products,postSize: products.length})
+   }) 
+   } else {
+      Product.find(findArgs)
       .populate("writer")
       .sort([[sortBy,order]])
       .skip(skip)
@@ -80,11 +102,31 @@ router.post("/getProducts", (req, res) => {
       if(err) return res.status(400).json({success: false, err})
          return res.status(200).json({success: true, products,postSize: products.length})
    })
+   }
+
+
+
+
 });
 
 
+// ?id=${productId}&type=single
+router.get('/products_by_id',auth,(req,res) => {
+   let type = req.query.type
+   let productIds = req.query.id
 
+   if (type === 'array') {
+      
+   }
+   Product.find({'_id': {$in: productIds}})
+   .populate('writer')
+   .exec((err,product) => {
+      if(err) return req.status(400).send(err)
+      return res.status(200).send(product)
+   })
 
+   //we eed to find the product information that belongs to product ID
+});
 
 
 

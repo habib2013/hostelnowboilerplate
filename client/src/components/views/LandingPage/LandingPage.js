@@ -6,6 +6,9 @@ import Meta from 'antd/lib/card/Meta';
 import ImageSlider from '../../utils/imageSlider';
 import CheckBox from './Sections/CheckBox';
 import RadioBox from './RadioBox';
+import {Continents,price} from './Data'
+import SearchFeatures from './Sections/SearchFeatures';
+import { Link } from 'react-router-dom';
 
 
 function LandingPage() {
@@ -14,6 +17,7 @@ const [Products, setProducts] = useState([]);
 const [Skip, setSkip] = useState(0)
 const [Limit, setLimit] = useState(8)
 const [PostSize, setPostSize] = useState(0)
+const [SearchTerms, setSearchTerms] = useState('')
 const [Filters, setFilters] = useState({
     continents: [],
     price: []
@@ -55,8 +59,10 @@ const RenderCards = Products.map((product,index) => {
     return <Col lg={6} xs={24} md={8}>
         <Card
             hoverable={true}
-            cover={
+            cover={ <Link to={`/product/${product._id}`}>
+
                 <ImageSlider images={product.image}/>
+            </Link>
             }
         >
                 <Meta 
@@ -78,18 +84,33 @@ const showFIlteredResults = (filters) => {
     setSkip(0)
 }
 
-const handlePrice = () => {
+const handlePrice = (value) => {
+    const data = price;
+    let array = [];
 
+    for(let key in data){
+        
+        if(data[key]._id == parseInt(value,10)) {
+                array = data[key].array;
+        }
+    }
+    console.log('array',array)
+    return array;
 }
 
 const handleFilters = (filters,category) => {
         console.log(filters)
     const newFilters = {...Filters}
+
+    
     newFilters[category] = filters
 
     if (category === 'price') {
-                handlePrice()
+            let priceValues = handlePrice(filters);
+            newFilters[category] = priceValues
     }
+
+    console.log(newFilters) 
     showFIlteredResults(newFilters)
     setFilters(newFilters)
 
@@ -108,9 +129,25 @@ const onLoadMore = () => {
     getProducts(variables)
 
         setSkip(skip)
-
-
 }
+
+const updateSearchTerms = (newSearchTerm) => {
+  
+    // console.log(newSearchTerm)
+
+    const variables = {
+        skip: 0,
+        limit: Limit,
+        filters: Filters,
+        searchTerm: newSearchTerm
+    }
+       setSkip(0)
+       setSearchTerms(newSearchTerm)
+    getProducts(variables)
+}
+
+
+
 
     return (
      <div style={{width: '75%',margin: '3rem auto'}}>
@@ -121,17 +158,26 @@ const onLoadMore = () => {
            <Row gutter={[16,16]}>
                <Col lg={12} xs={24}>
                <CheckBox 
+               list={Continents}
         handleFilters={filters => handleFilters(filters, 'continents')}
         />
                </Col>
                <Col lg={12} xs={24}>
                <RadioBox 
+               list={price}
           handleFilters={filters => handleFilters(filters, 'price')}
         />
                </Col>
 
-               </Row> 
 
+               </Row> 
+<div style={{display: 'flex',justifyContent: 'flex-end', margin: '1rem auto'}}>
+
+<SearchFeatures
+refreshFunction = {updateSearchTerms}
+/>
+
+</div>
      
       
 
