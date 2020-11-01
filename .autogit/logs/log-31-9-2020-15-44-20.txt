@@ -1,0 +1,25 @@
+-------------------- Auto-Git Log --------------------
+		Sat Oct 31 2020 15:44:20 GMT+0100 (West Africa Standard Time)
+------------------------------------------------------
+
+Modified files:
+* client/package.json
+* client/src/components/App.js
+* client/src/components/views/LandingPage/LandingPage.js
+* client/src/components/views/LandingPage/RadioBox.js
+* client/src/components/views/LandingPage/Sections/CheckBox.js
+* client/yarn.lock
+* server/models/Product.js
+* server/routes/product.js
+
+
+Created files:
+* client/src/components/views/DetailProductPage/DetailProductPage.js
+* client/src/components/views/LandingPage/Data.js
+* client/src/components/views/LandingPage/Sections/SearchFeatures.js
+
+
+Deleted files:
+
+
+Renamed files:
