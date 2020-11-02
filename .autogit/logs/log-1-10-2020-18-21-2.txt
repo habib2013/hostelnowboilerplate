@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Sun Nov 01 2020 18:21:02 GMT+0100 (West Africa Standard Time)
+------------------------------------------------------
+
+Modified files:
+* client/src/index.css
+
+
+Created files:
+* .autogit/logs/log-1-10-2020-8-51-56.txt
+
+
+Deleted files:
+
+
+Renamed files:

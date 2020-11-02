@@ -22,7 +22,9 @@ function DetailProductPage(props) {
     
    }, [])
 
+const addToCartHandler = (product) => {
 
+}
    return (
     <div className="postPage" style={{width: '100%',padding: '3rem 4rem'}}>
          <div style={{display:'flex',justifyContent: 'center'}}>
@@ -34,7 +36,7 @@ function DetailProductPage(props) {
          <ProductImage detail={Product}/>
       </Col>
       <Col lg={12} xs={24}>
-        <ProductInfo detail={Product}/>
+        <ProductInfo detail={Product} addToCart={addToCartHandler}/>
       </Col>
 </Row>
     </div>
