@@ -1,0 +1,22 @@
+-------------------- Auto-Git Log --------------------
+		Mon Nov 02 2020 09:50:09 GMT+0100 (West Africa Standard Time)
+------------------------------------------------------
+
+Modified files:
+* client/src/_actions/types.js
+* client/src/_actions/user_actions.js
+* client/src/_reducers/user_reducer.js
+* client/src/components/utils/Sections/ProductInfo.js
+* client/src/components/views/DetailProductPage/DetailProductPage.js
+* server/models/User.js
+* server/routes/users.js
+
+
+Created files:
+* .autogit/logs/log-2-10-2020-7-49-43.txt
+
+
+Deleted files:
+
+
+Renamed files:
