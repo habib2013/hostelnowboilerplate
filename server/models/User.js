@@ -14,6 +14,14 @@ const userSchema = mongoose.Schema({
         trim:true,
         unique: 1 
     },
+    cart: {
+        type: Array,
+        default: []
+    },
+    history: {
+        type: Array,
+        default: []
+    },
     password: {
         type: String,
         minglength: 5

@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Mon Nov 02 2020 07:49:43 GMT+0100 (West Africa Standard Time)
+------------------------------------------------------
+
+Modified files:
+* client/src/components/utils/Sections/ProductInfo.js
+* client/src/components/views/DetailProductPage/DetailProductPage.js
+
+
+Created files:
+* .autogit/logs/log-1-10-2020-18-21-2.txt
+
+
+Deleted files:
+
+
+Renamed files:

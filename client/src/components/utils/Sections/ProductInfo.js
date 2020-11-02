@@ -10,7 +10,7 @@ function ProductInfo(props) {
       }, [props.detail])
 
       const addToCartHandler = () => {
-         props.addToCartHandler(props.detail._id)
+         props.addToCart(props.detail._id)
       }
 
 
