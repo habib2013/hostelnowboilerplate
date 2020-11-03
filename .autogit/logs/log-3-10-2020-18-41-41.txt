@@ -1,0 +1,18 @@
+-------------------- Auto-Git Log --------------------
+		Tue Nov 03 2020 18:41:41 GMT+0100 (West Africa Standard Time)
+------------------------------------------------------
+
+Modified files:
+* client/src/components/views/CartPage/CartPage.js
+
+
+Created files:
+* .autogit/logs/log-3-10-2020-17-40-5.txt
+* client/src/components/utils/Paypal.js
+* server/models/Payment.js
+
+
+Deleted files:
+
+
+Renamed files:
