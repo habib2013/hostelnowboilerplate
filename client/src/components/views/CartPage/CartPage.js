@@ -4,6 +4,7 @@ import {useDispatch} from 'react-redux';
 import {getCartItems,removeCartItem} from '../../../_actions/user_actions'
 import UserCardBlock from './UserCardBlock';
 import {Empty, Result} from 'antd'
+import Paypal from '../../utils/Paypal';
 
 function CartPage(props) {
 const dispatch = useDispatch();
@@ -99,6 +100,9 @@ const [showSuccess, setShowSuccess] = useState(false)
 
 
         </div>
+
+<Paypal/>
+
       </div>
    )
 }

@@ -1,0 +1,19 @@
+-------------------- Auto-Git Log --------------------
+		Tue Nov 03 2020 17:40:05 GMT+0100 (West Africa Standard Time)
+------------------------------------------------------
+
+Modified files:
+* client/src/_actions/types.js
+* client/src/_actions/user_actions.js
+* client/src/_reducers/user_reducer.js
+* client/src/components/views/CartPage/CartPage.js
+* server/routes/users.js
+
+
+Created files:
+
+
+Deleted files:
+
+
+Renamed files:
