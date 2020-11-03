@@ -8,6 +8,8 @@ import {Empty, Result} from 'antd'
 function CartPage(props) {
 const dispatch = useDispatch();
 const [Total, setTotal] = useState(0)
+const [ShowTotal, setShowTotal] = useState(false)
+const [showSuccess, setShowSuccess] = useState(false)
 
    useEffect(() => {
          let cartItems = [];
@@ -34,10 +36,29 @@ const [Total, setTotal] = useState(0)
                   total += parseInt(item.price) * item.quantity
                })
                   setTotal(total)
+                  setShowTotal(true)
       }
 
       const removeFromCart = (productId) => {
-         dispatch(removeCartItem(productId)).then()
+         dispatch(removeCartItem(productId)).then(
+            () => {
+               Axios.get('/api/users/userCartInfo')
+               .then(response => {
+                  if (response.data.success) {
+                     if(response.data.cartDetail.length <= 0 ) {
+                       setShowTotal(false)
+                     }
+                     else {
+                        calculateTotal(response.data.cartDetail)
+                     }
+                  }
+                  else {
+                     // alert('unable to get Cart Details')
+                  }
+               })
+            }
+
+         )
       }
 
    return (
@@ -48,14 +69,18 @@ const [Total, setTotal] = useState(0)
          products = {props.user.cartDetail}
             removeItem = {removeFromCart}
          />
-         <div style={{marginTop: '3rem'}}>
-   <h2>Total amount: $ {Total}</h2>
-         </div>
 
-      <Result
+      
+
+      { ShowTotal ?
+               <div style={{marginTop: '3rem'}}>
+               <h2>Total amount: $ {Total}</h2> 
+             </div> :
+         showSuccess ? 
+         <Result
          status="success"
          title = "Successfully purchased Items"
-      />
+      /> : 
 
       <div style={{
          width:'100%', display: 'flex',flexDirection: 'column',
@@ -65,6 +90,10 @@ const [Total, setTotal] = useState(0)
             <Empty description={false}/>
             <p>No Items in the cart</p>
       </div>
+      }
+
+    
+    
 
         
 
