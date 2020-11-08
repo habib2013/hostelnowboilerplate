@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Sun Nov 08 2020 12:07:51 GMT+0100 (West Africa Standard Time)
+------------------------------------------------------
+
+Modified files:
+* package.json
+
+
+Created files:
+* .autogit/logs/log-8-10-2020-11-36-42.txt
+
+
+Deleted files:
+
+
+Renamed files:
